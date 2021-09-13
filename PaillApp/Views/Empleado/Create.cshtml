@@ -1,0 +1,75 @@
+﻿@model PaillApp.Models.EmpleadoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Agregar Nueva Área</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form method="post" asp-action="Create" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="NombreCompleto"></label>
+                    <input asp-for="NombreCompleto" class="form-control" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cedula"></label>
+                    <input asp-for="Cedula" class="form-control" />
+                    <span asp-validation-for="Cedula" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Correo"></label>
+                    <input asp-for="Correo" class="form-control" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdJefe"></label>
+                    <select asp-for="IdJefe" class="form-control" asp-items="@(new SelectList(ViewBag.Jefes, "Value", "Text", "Selected"))">
+                        <option value="">Seleccione un Jefe</option>
+                    </select>
+                    <span asp-validation-for="IdJefe" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdArea"></label>
+                    <select asp-for="IdArea" class="form-control" asp-items="@(new SelectList(ViewBag.Areas, "Value", "Text", "Selected"))">
+                        <option value="">Seleccione un Área</option>
+                    </select>
+                    <span asp-validation-for="IdArea" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaNacimiento"></label>
+                    <input asp-for="FechaNacimiento" class="form-control" />
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaIngreso"></label>
+                    <input asp-for="FechaIngreso" class="form-control" />
+                    <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagen"></label>
+                    <input asp-for="Imagen" class="btn btn-outline-primary" />
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-outline-primary" asp-action="Index" asp-controller="Empleado">Cancelar</a>
+                    <input type="submit" value="Agregar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

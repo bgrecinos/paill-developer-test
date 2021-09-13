@@ -1,0 +1,45 @@
+﻿@model PaillApp.Models.AreaViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Eliminar Área</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form method="post" asp-action="DeleteArea">
+                <input type="hidden" asp-for="IdArea" />
+                <div class="form-group">
+                    <label asp-for="Nombre"></label>
+                    <input asp-for="Nombre" class="form-control" disabled/>
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion"></label>
+                    <input asp-for="Descripcion" class="form-control" disabled/>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-outline-primary" asp-action="Index" asp-controller="Area">Cancelar</a>
+                    <input type="submit" value="Eliminar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+
+
+
