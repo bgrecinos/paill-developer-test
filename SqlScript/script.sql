@@ -1,0 +1,33 @@
+--CREATE DATABASE Paill
+--GO 
+--USE Paill
+--GO
+CREATE TABLE Area(
+	IdArea INT IDENTITY(1,1),
+	Nombre NVARCHAR(50) NOT NULL,
+	Descripcion NVARCHAR(150) NOT NULL
+	CONSTRAINT Pk_Area PRIMARY KEY(IdArea)
+)
+GO
+CREATE TABLE Empleado(
+	IdEmpleado INT IDENTITY(1,1),
+	NombreCompleto NVARCHAR(150) NOT NULL,
+	Cedula NVARCHAR(15) NOT NULL,
+	Correo NVARCHAR(200) NOT NULL,
+	FechaNacimiento DATETIME NOT NULL,
+	FechaIngreso DATETIME NOT NULL,
+	IdJefe INT NOT NULL,
+	IdArea INT NOT NULL,
+	Foto VARBINARY(MAX),
+	CONSTRAINT Pk_Empleado PRIMARY KEY(IdEmpleado),
+	CONSTRAINT Fk_Empleado_Area FOREIGN KEY(IdArea) REFERENCES Area(IdArea)
+
+)	
+GO
+CREATE TABLE EmpleadoHabilidad(
+	IdHabilidad INT IDENTITY(1,1),
+	IdEmpleado INT NOT NULL,
+	NombreHabilidad NVARCHAR(100) NOT NULL,
+	CONSTRAINT Pk_EmpleadoHabilidad PRIMARY KEY(IdHabilidad),
+	CONSTRAINT Fk_EmpleadoHabilidad FOREIGN KEY(IdEmpleado) REFERENCES Empleado(IdEmpleado)
+)
